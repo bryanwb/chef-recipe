@@ -20,7 +20,28 @@ Or install it yourself as:
 
 ## Usage
 
-`chef-recipe RECIPE_FILE`
+Execute the chef-recipe command as follows. You may need to execute it
+using sudo.
+
+`sudo chef-recipe RECIPE_FILE`
+
+The Recipe can contain any valid Chef resources. Here is a very simple
+example recipe
+
+```Ruby
+
+file "/tmp/foobar.log" do
+  content <<-EOF
+  hello world!
+EOF
+end
+
+link "/tmp/foobar.link" do
+  to "/tmp/foobar.log"
+end
+
+```
+
 
 ## Contributing
 

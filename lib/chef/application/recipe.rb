@@ -88,9 +88,11 @@ class Chef::Application::Recipe < Chef::Application
   def run_chef_recipe
     recipe_path = ARGV[0]
     recipe_path = find_recipe recipe_path
+
     Chef::Config[:solo] = true
     client = Chef::Client.new
     client.run_ohai
+    client.load_node
     client.build_node
     run_context = if client.events.nil?
                     Chef::RunContext.new(client.node, {})
