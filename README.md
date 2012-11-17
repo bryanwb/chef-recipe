@@ -1,6 +1,8 @@
-# Chef::Recipe
+# chef-recipe
 
-TODO: Write a gem description
+This gem installs chef-recipe, a command-line to help you start
+learning Chef as quickly as possible. This is an education tool meant
+to new Chef users started as quickly as possible.
 
 ## Installation
 
@@ -18,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+`chef-recipe RECIPE_FILE`
 
 ## Contributing
 
@@ -27,3 +29,7 @@ TODO: Write usage instructions here
 3. Commit your changes (`git commit -am 'Added some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+## Authorship
+
+This gem is based on a [gist](https://gist.github.com/2920702) written by Daniel DeLeo 
