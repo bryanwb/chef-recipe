@@ -42,6 +42,19 @@ end
 
 ```
 
+chef-recipe also accepts raw resources from STDIN
+
+
+```Ruby
+
+echo 'package "emacs"' | chef-recipe -
+
+or
+
+cat my_first_recipe.rb | chef-recipe -
+
+```
+
 
 ## Contributing
 
@@ -53,4 +66,5 @@ end
 
 ## Authorship
 
-This gem is based on a [gist](https://gist.github.com/2920702) written by Daniel DeLeo 
+This gem is based on a [gist](https://gist.github.com/2920702) written
+by the awesome Daniel DeLeo.
