@@ -47,11 +47,11 @@ chef-recipe also accepts raw resources from STDIN
 
 ```Ruby
 
-echo 'package "emacs"' | chef-recipe -
+echo 'package "emacs"' | sudo chef-recipe -
 
 or
 
-cat my_first_recipe.rb | chef-recipe -
+cat my_first_recipe.rb | sudo chef-recipe -
 
 ```
 
