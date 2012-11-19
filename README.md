@@ -42,19 +42,6 @@ end
 
 ```
 
-chef-recipe also accepts raw resources from STDIN
-
-
-```Ruby
-
-echo 'package "emacs"' | sudo chef-recipe -
-
-or
-
-cat my_first_recipe.rb | sudo chef-recipe -
-
-```
-
 
 ## Contributing
 

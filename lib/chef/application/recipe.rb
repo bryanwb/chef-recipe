@@ -30,17 +30,7 @@ class Chef::Application::Recipe < Chef::Application
 
   banner "Usage: chef-recipe RECIPE_FILE"
 
-  option :stdin,
-  :short        => "-",
-  :long         => "-",
-  :description  => "Receive recipe input from STDIN",
-  :on           => :tail,
-  :boolean      => true,
-  :show_options => true,
-  :default => false,
-  :exit         => 0
-
-  
+ 
   option :log_level,
     :short        => "-l LEVEL",
     :long         => "--log_level LEVEL",
@@ -98,9 +88,7 @@ class Chef::Application::Recipe < Chef::Application
   
   def run_chef_recipe
     recipe_path = ARGV[0]
-    unless Chef::Config[:stdin]
-      recipe_path = find_recipe recipe_path
-    end
+    recipe_path = find_recipe recipe_path
     
     Chef::Config[:solo] = true
     client = Chef::Client.new
@@ -114,19 +102,14 @@ class Chef::Application::Recipe < Chef::Application
                   end
     
     recipe = Chef::Recipe.new("(chef-recipe cookbook)", "(chef-recipe recipe)", run_context)
-
-    unless Chef::Config[:stdin]
-      recipe.from_file(recipe_path)
-    else
-      recipe.instance_eval(ARGF.read)
-    end
-      
+    recipe.from_file(recipe_path)
     runner = Chef::Runner.new(run_context)
     runner.converge
   end
 
   def run_application
     begin
+      parse_options
       run_chef_recipe
       Chef::Application.exit! "Exiting", 0
     rescue SystemExit => e
